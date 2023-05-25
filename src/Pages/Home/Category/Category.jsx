@@ -14,7 +14,7 @@ const Category = () => {
   return (
     <section>
       <SectionTitle
-      subHeading={"--- Form 11.00am to 10.00pm ---"}
+      subHeading={"Form 11.00am to 10.00pm"}
       heading={'ORDER ONLINE'}
       ></SectionTitle>
       <Swiper
