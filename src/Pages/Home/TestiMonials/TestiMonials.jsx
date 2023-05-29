@@ -8,12 +8,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { Rating } from "@smastrom/react-rating";
-import '@smastrom/react-rating/style.css'
+import "@smastrom/react-rating/style.css";
 
 const TestiMonials = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("/review.json")
+    fetch("http://localhost:3000/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
@@ -38,7 +38,12 @@ const TestiMonials = () => {
             key={review._id}
           >
             <div className="my-24 mx-32">
-              <Rating className="mx-auto mb-2" style={{ maxWidth: 180 }} value={review.Rating} readOnly />
+              <Rating
+                className="mx-auto mb-2"
+                style={{ maxWidth: 180 }}
+                value={review.Rating}
+                readOnly
+              />
               <p className="">{review.details}</p>
               <h2 className="text-2xl text-orange-500 mt-3">{review.name}</h2>
             </div>
