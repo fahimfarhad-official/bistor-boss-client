@@ -13,8 +13,8 @@ const Signup = () => {
     console.log({ name, email, password });
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const loggeduser = result.user;
+        console.log(loggeduser);
       })
       .catch((error) => {
         const message = error.message;
