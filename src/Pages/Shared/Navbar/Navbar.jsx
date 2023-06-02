@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
+  const {user, SignOut} = useContext(AuthContext);
+  const handelLogOut = () =>{
+    SignOut()
+    .then(() =>{})
+    .catch(error =>{
+      const message = error.message
+      console.log(message);
+    })
+  }
   const navItem = (
     <>
       <li>
@@ -13,12 +23,15 @@ const Navbar = () => {
       <li>
         <Link to='/order-food/salad'>Order Food</Link>
       </li>
-      <li>
+      
+      {
+        user ? <>
+        <button onClick={handelLogOut} className="btn btn-ghost"> Logout</button>
+        </> : <><li>
         <Link to='/login'>Login</Link>
-      </li>
-      <li>
-        <Link to='/signup'>Signup</Link>
-      </li>
+      </li></>
+      }
+      
     </>
   );
   return (
